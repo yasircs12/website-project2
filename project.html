@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelance Worker Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="script.js">
+</head>
+<body>
+
+<!-- ══════════ LANDING PAGE ══════════ -->
+<div id="landing" class="view active">
+  <nav class="land-nav">
+    <div class="land-logo">
+      <div class="ico">F</div>
+      <span>Freelance Worker Tracker</span>
+    </div>
+    <div class="land-links">
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="aboutus.html">About</a>
+    </div>
+    <div class="land-nav-btns">
+      <button class="btn-ghost" onclick="goApp()">Login</button>
+      <button class="btn-primary" onclick="goApp()">Sign Up Free</button>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-badge"><span></span> Trusted by 12,000+ freelancers</div>
+      <h1>Master Your Freelance Business.<br><span class="grad-text">All-in-One.</span></h1>
+      <p>Track projects, hours, and earnings in one centralized platform. Stop juggling spreadsheets — start growing your business.</p>
+      <div class="hero-cta">
+        <button class="btn-hero" onclick="goApp()">Get Started Now — It's Free.</button>
+        <span class="hero-note">No credit card required</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone-glow"></div>
+      <div class="phone-mock">
+        <div class="phone-screen-top">
+          <div class="app-icon">F</div>
+          <span>Freelance Worker Tracker</span>
+        </div>
+        <div class="phone-stat-row">
+          <div class="phone-stat"><div class="val">$10k</div><div class="lbl">Revenue</div></div>
+          <div class="phone-stat"><div class="val">$350</div><div class="lbl">This week</div></div>
+        </div>
+        <div class="phone-section">
+          <div class="title">Dashboard</div>
+          <div style="font-size:.6rem;color:#10B981;margin-bottom:.4rem;">▲ Track projects &nbsp; 54% ↑</div>
+          <div style="font-size:.6rem;color:#F59E0B;margin-bottom:.6rem;">▲ Earnings Completion &nbsp; 78% ↑</div>
+          <div class="title">Earned Bonus</div>
+          <div class="phone-proj"><div class="proj-name">Website Redesign</div><div class="prog-bar"><div class="prog-fill" style="width:65%"></div></div></div>
+          <div class="phone-proj"><div class="proj-name">App Development</div><div class="prog-bar"><div class="prog-fill" style="width:40%"></div></div></div>
+          <div class="phone-proj"><div class="proj-name">Brand Identity</div><div class="prog-bar"><div class="prog-fill" style="width:85%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-strip">
+    <div class="feat-card">
+      <div class="feat-icon">⏱</div>
+      <h3>1. Smart Time Tracking</h3>
+      <p>Track projects tracking and stopwatch to a smart time your earnings.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📁</div>
+      <h3>2. Seamless Project Management</h3>
+      <p>Get seamless project management in your projects and mods.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💰</div>
+      <h3>3. Complete Earnings Overview</h3>
+      <p>Complete earnings overview and emportand show without your chat.</p>
+    </div>
+  </div>
+
+  <div class="why-section">
+    <div class="section-label">Why choose us?</div>
+    <h2>Built for Freelancers,<br>by Freelancers</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">📈</div>
+        <div class="why-text"><h4>Increased Productivity</h4><p>Stay on top of every project with real-time tracking and smart reminders.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📂</div>
+        <div class="why-text"><h4>Simplified Organization</h4><p>All clients, projects, and invoices in one place — zero friction.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔒</div>
+        <div class="why-text"><h4>Secure & Private</h4><p>Your financial and client data is encrypted and only visible to you.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📊</div>
+        <div class="why-text"><h4>Powerful Reports</h4><p>Weekly and monthly breakdowns to understand where your time goes.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ LOGIN PAGE ══════════ -->
+<div id="login" class="view">
+  <div class="auth-grid">
+    <div class="auth-left">
+      <div class="auth-left-logo" onclick="showView('landing')">
+        <div class="ico">F</div>
+        <span>Freelance Worker Tracker</span>
+      </div>
+      <div class="auth-stat-card asc-1">
+        <div class="asc-val">$4,250</div>
+        <div class="asc-lbl">Monthly Earnings</div>
+      </div>
+      <div class="auth-stat-card asc-2">
+        <div class="asc-val">34.5h</div>
+        <div class="asc-lbl">Tracked This Week</div>
+      </div>
+      <div class="auth-left-content">
+        <h2>Welcome back,<br>freelancer 👋</h2>
+        <p>Log back in to pick up where you left off. Your projects and time logs are waiting.</p>
+        <div class="auth-features">
+          <div class="auth-feat"><span class="auth-feat-dot"></span> Real-time time tracking</div>
+          <div class="auth-feat"><span class="auth-feat-dot"></span> Client &amp; project management</div>
+          <div class="auth-feat"><span class="auth-feat-dot"></span> Earnings overview &amp; reports</div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-eyebrow">Welcome Back</div>
+      <h1>Sign in to your account</h1>
+      <p class="auth-sub">Don't have an account? <a onclick="showView('signup')">Create one free →</a></p>
+      <div class="social-btns">
+        <button class="social-btn" onclick="socialLogin('Google')"><span class="sb-icon">🌐</span> Google</button>
+        <button class="social-btn" onclick="socialLogin('GitHub')"><span class="sb-icon">🐙</span> GitHub</button>
+      </div>
+      <div class="auth-divider"><span>or continue with email</span></div>
+      <div class="auth-field">
+        <label>Email address</label>
+        <div class="auth-field-wrap">
+          <input type="email" id="login-email" placeholder="alex@example.com" oninput="clearErr('login-email-err')">
+          <span class="field-icon">✉️</span>
+        </div>
+        <div class="err-msg" id="login-email-err">Please enter a valid email.</div>
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <div class="auth-field-wrap">
+          <input type="password" id="login-pass" placeholder="••••••••" oninput="clearErr('login-pass-err')">
+          <span class="field-icon" onclick="togglePwd('login-pass', this)">👁</span>
+        </div>
+        <div class="err-msg" id="login-pass-err">Incorrect email or password.</div>
+      </div>
+      <div class="auth-row">
+        <label class="remember-label"><input type="checkbox" id="login-remember"> Remember me</label>
+        <a class="forgot-link" onclick="showToast('Password reset link sent! Check your inbox.','📧')">Forgot password?</a>
+      </div>
+      <button class="auth-submit" id="login-btn" onclick="doLogin()"><span>Sign In</span></button>
+      <p class="auth-terms">By signing in you agree to our <a>Terms of Service</a> and <a>Privacy Policy</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SIGNUP PAGE ══════════ -->
+<div id="signup" class="view">
+  <div class="auth-grid">
+    <div class="auth-left">
+      <div class="auth-left-logo" onclick="showView('landing')">
+        <div class="ico">F</div>
+        <span>Freelance Worker Tracker</span>
+      </div>
+      <div class="auth-stat-card asc-1">
+        <div class="asc-val">12k+</div>
+        <div class="asc-lbl">Active Freelancers</div>
+      </div>
+      <div class="auth-stat-card asc-2">
+        <div class="asc-val">Free</div>
+        <div class="asc-lbl">No credit card needed</div>
+      </div>
+      <div class="auth-left-content">
+        <h2>Start tracking<br>smarter today ✨</h2>
+        <p>Join thousands of freelancers who manage their business in one place. Free forever.</p>
+        <div class="auth-features">
+          <div class="auth-feat"><span class="auth-feat-dot"></span> Set up in under 2 minutes</div>
+          <div class="auth-feat"><span class="auth-feat-dot"></span> No credit card required</div>
+          <div class="auth-feat"><span class="auth-feat-dot"></span> Invite your team members</div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-eyebrow">Get Started Free</div>
+      <h1>Create your account</h1>
+      <p class="auth-sub">Already have an account? <a onclick="showView('login')">Sign in →</a></p>
+      <div class="social-btns">
+        <button class="social-btn" onclick="socialLogin('Google')"><span class="sb-icon">🌐</span> Google</button>
+        <button class="social-btn" onclick="socialLogin('GitHub')"><span class="sb-icon">🐙</span> GitHub</button>
+      </div>
+      <div class="auth-divider"><span>or sign up with email</span></div>
+      <div class="name-row">
+        <div class="auth-field">
+          <label>First name</label>
+          <div class="auth-field-wrap"><input type="text" id="signup-first" placeholder="Alex" oninput="clearErr('signup-first-err')"></div>
+          <div class="err-msg" id="signup-first-err">Required.</div>
+        </div>
+        <div class="auth-field">
+          <label>Last name</label>
+          <div class="auth-field-wrap"><input type="text" id="signup-last" placeholder="Johnson" oninput="clearErr('signup-last-err')"></div>
+          <div class="err-msg" id="signup-last-err">Required.</div>
+        </div>
+      </div>
+      <div class="auth-field">
+        <label>Email address</label>
+        <div class="auth-field-wrap">
+          <input type="email" id="signup-email" placeholder="alex@example.com" oninput="clearErr('signup-email-err')">
+          <span class="field-icon">✉️</span>
+        </div>
+        <div class="err-msg" id="signup-email-err">Please enter a valid email.</div>
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <div class="auth-field-wrap">
+          <input type="password" id="signup-pass" placeholder="Min. 8 characters" oninput="clearErr('signup-pass-err')">
+          <span class="field-icon" onclick="togglePwd('signup-pass', this)">👁</span>
+        </div>
+        <div class="err-msg" id="signup-pass-err">Password must be at least 8 characters.</div>
+      </div>
+      <div class="auth-field">
+        <label>Confirm password</label>
+        <div class="auth-field-wrap">
+          <input type="password" id="signup-confirm" placeholder="Repeat your password" oninput="clearErr('signup-confirm-err')">
+          <span class="field-icon" onclick="togglePwd('signup-confirm', this)">👁</span>
+        </div>
+        <div class="err-msg" id="signup-confirm-err">Passwords do not match.</div>
+      </div>
+      <button class="auth-submit" id="signup-btn" onclick="doSignup()"><span>Create Account</span></button>
+      <p class="auth-terms">By creating an account you agree to our <a>Terms of Service</a> and <a>Privacy Policy</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ APP ══════════ -->
+<div id="app" class="view" style="display:none;">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="ico">F</div>
+      <span>Freelance Worker Tracker</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item active" id="nav-dash" onclick="showAppView('dashboard')">
+        <span class="nav-icon">⊞</span> Dashboard
+      </a>
+      <a class="nav-item" id="nav-proj" onclick="showAppView('projects')">
+        <span class="nav-icon">📁</span> Projects
+      </a>
+      <a class="nav-item" id="nav-time" onclick="showAppView('timetracker')">
+        <span class="nav-icon">🕐</span> Time Tracker
+      </a>
+      <a class="nav-item" id="nav-clients" onclick="showAppView('clients')">
+        <span class="nav-icon">👤</span> Clients
+      </a>
+      <a class="nav-item" id="nav-users" onclick="showAppView('users')">
+        <span class="nav-icon">👥</span> Users
+      </a>
+      <a class="nav-item" id="nav-reports" onclick="showAppView('reports')">
+        <span class="nav-icon">📊</span> Reports
+      </a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="avatar">A</div>
+      <div class="user-info">
+        <div class="name">Alex Johnson</div>
+        <div class="role">Pro Plan</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Topbar -->
+    <div class="topbar">
+      <h1 id="topbar-title">Dashboard</h1>
+      <div class="topbar-right">
+        <button class="icon-btn" title="Notifications">🔔</button>
+        <div class="avatar-sm">A</div>
+        <button class="topbar-action" id="topbar-action-btn" onclick="topbarAction()">
+          <span>⏱</span> Start New Timer
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard view -->
+    <div class="app-view active page-content" id="view-dashboard">
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-label">Active Projects</div>
+          <div class="stat-value">5</div>
+          <div class="stat-sub">↑ 2 new this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Hours This Week</div>
+          <div class="stat-value">34.5</div>
+          <div class="stat-sub">↑ +4.5 hrs from last week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Monthly Earnings</div>
+          <div class="stat-value">$4,250</div>
+          <div class="stat-sub">↑ +12% from last month</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3>In Progress Projects</h3>
+            <button class="card-menu">···</button>
+          </div>
+          <div class="card-body">
+            <div class="proj-row">
+              <div class="proj-row-info">
+                <div class="proj-row-name">Website Redesign</div>
+                <div class="prog-track"><div class="prog-fill-2" style="width:65%"></div></div>
+              </div>
+              <span class="proj-status status-progress">In Progress</span>
+            </div>
+            <div class="proj-row">
+              <div class="proj-row-info">
+                <div class="proj-row-name">App Development</div>
+                <div class="prog-track"><div class="prog-fill-2" style="width:40%"></div></div>
+              </div>
+              <span class="proj-status status-progress">In Progress</span>
+            </div>
+            <div class="proj-row">
+              <div class="proj-row-info">
+                <div class="proj-row-name">Brand Identity</div>
+                <div class="prog-track"><div class="prog-fill-2" style="width:100%"></div></div>
+              </div>
+              <span class="proj-status status-complete">Complete</span>
+            </div>
+            <div class="proj-row">
+              <div class="proj-row-info">
+                <div class="proj-row-name">SEO Campaign</div>
+                <div class="prog-track"><div class="prog-fill-2" style="width:55%"></div></div>
+              </div>
+              <span class="proj-status status-progress">In Progress</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Recent Earnings</h3>
+            <button class="card-menu">···</button>
+          </div>
+          <div class="chart-area">
+            <div class="chart-bars">
+              <div class="bar-col"><div class="bar" style="height:35%"></div><div class="bar-lbl">Mon</div></div>
+              <div class="bar-col"><div class="bar" style="height:55%"></div><div class="bar-lbl">Tue</div></div>
+              <div class="bar-col"><div class="bar" style="height:45%"></div><div class="bar-lbl">Wed</div></div>
+              <div class="bar-col"><div class="bar" style="height:70%"></div><div class="bar-lbl">Thu</div></div>
+              <div class="bar-col"><div class="bar" style="height:85%"></div><div class="bar-lbl">Fri</div></div>
+              <div class="bar-col"><div class="bar" style="height:60%"></div><div class="bar-lbl">Sat</div></div>
+              <div class="bar-col"><div class="bar" style="height:95%"></div><div class="bar-lbl">Sun</div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-top:.75rem;">
+              <span style="font-size:.7rem;color:var(--muted)">$0</span>
+              <span style="font-size:.7rem;color:var(--muted)">Peak: $850</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects view -->
+    <div class="app-view page-content" id="view-projects">
+      <div class="page-header">
+        <h2>Your Projects</h2>
+        <button class="topbar-action" onclick="openModal()"><span>+</span> New Project</button>
+      </div>
+      <div class="projects-grid" id="projects-grid">
+        <!-- injected by JS -->
+      </div>
+    </div>
+
+    <!-- Time Tracker view -->
+    <div class="app-view page-content" id="view-timetracker">
+      <div class="page-header"><h2>Time Tracker</h2></div>
+      <div class="timer-card" id="timer-card">
+        <div class="timer-display" id="timer-display">00:00:00</div>
+        <div class="timer-controls">
+          <div class="timer-selects">
+            <div class="select-group">
+              <label>Select Project</label>
+              <select id="timer-proj">
+                <option>Website Redesign</option>
+                <option>App Development</option>
+                <option>Brand Identity</option>
+                <option>SEO Campaign</option>
+              </select>
+            </div>
+            <div class="select-group">
+              <label>Select Task</label>
+              <select id="timer-task">
+                <option>Frontend Development</option>
+                <option>Backend Integration</option>
+                <option>UI Design</option>
+                <option>Content Writing</option>
+              </select>
+            </div>
+          </div>
+          <div class="timer-btns">
+            <button class="btn-stop" id="timer-toggle-btn" onclick="toggleTimer()">
+              <span>▶</span> Start Timer
+            </button>
+            <button class="btn-pause" id="timer-pause-btn" onclick="pauseTimer()" style="display:none">
+              ⏸ Pause
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h3>Today's Log</h3><button class="card-menu">···</button></div>
+        <div class="card-body" style="padding:0 1.4rem 1.2rem">
+          <table class="log-table">
+            <thead>
+              <tr>
+                <th>Project Name</th>
+                <th>Task</th>
+                <th>Duration</th>
+                <th>Earnings</th>
+              </tr>
+            </thead>
+            <tbody id="log-tbody">
+              <tr>
+                <td class="proj-name-td">Website Redesign</td>
+                <td>Frontend Development</td>
+                <td>2h 15m</td>
+                <td class="amount-td">$112.50</td>
+              </tr>
+              <tr>
+                <td class="proj-name-td">Website Redesign</td>
+                <td>Frontend Development</td>
+                <td>2h 15m</td>
+                <td class="amount-td">$112.50</td>
+              </tr>
+              <tr>
+                <td class="proj-name-td">Easemen Interion</td>
+                <td>Frontend Development</td>
+                <td>2h 15m</td>
+                <td class="amount-td">$112.50</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clients view -->
+    <div class="app-view page-content" id="view-clients">
+      <div class="page-header"><h2>Clients</h2><button class="topbar-action"><span>+</span> Add Client</button></div>
+      <div class="card"><div class="card-body" style="padding:2rem;text-align:center;color:var(--muted)">Client management coming soon.</div></div>
+    </div>
+
+    <!-- Users view -->
+    <div class="app-view page-content" id="view-users">
+      <div class="page-header">
+        <h2>Team Members</h2>
+        <button class="topbar-action" onclick="showView('signup')"><span>+</span> Add Person</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>All Users</h3><button class="card-menu">···</button></div>
+        <div class="card-body" style="padding:0 1.4rem 1.2rem">
+          <table class="users-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Joined</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reports view -->
+    <div class="app-view page-content" id="view-reports">
+      <div class="page-header"><h2>Reports</h2></div>
+      <div class="card"><div class="card-body" style="padding:2rem;text-align:center;color:var(--muted)">Reports coming soon.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- New Project Modal -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <h2>New Project</h2>
+    <div class="form-group">
+      <label>Project Name</label>
+      <input type="text" id="new-proj-name" placeholder="e.g. Website Redesign">
+    </div>
+    <div class="form-group">
+      <label>Client</label>
+      <input type="text" id="new-proj-client" placeholder="e.g. Acme Corp">
+    </div>
+    <div class="form-group">
+      <label>Hourly Rate ($)</label>
+      <input type="number" id="new-proj-rate" placeholder="50" value="50">
+    </div>
+    <div class="form-group">
+      <label>Status</label>
+      <select id="new-proj-status">
+        <option>In Progress</option>
+        <option>Complete</option>
+        <option>On Hold</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-primary" onclick="addProject()">Create Project</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast"><span class="t-icon" id="toast-icon">✅</span><span id="toast-msg">Done!</span></div>
+
+<script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About – Freelance Worker Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #7c3aed;
+      --blue:   #2563eb;
+      --indigo: #4f46e5;
+      --bg:     #f3f4f8;
+      --card:   #ffffff;
+      --text:   #1e1b4b;
+      --muted:  #6b7280;
+      --border: #e5e7eb;
+      --accent: #6d28d9;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); text-decoration: none; }
+    .nav-logo {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--purple), var(--blue));
+      display: grid; place-items: center;
+    }
+    .nav-logo svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: .9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .nav-bell { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--border); cursor: pointer; }
+    .nav-bell svg { width: 18px; height: 18px; stroke: var(--muted); stroke-width: 2; fill: none; }
+    .nav-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg,#f97316,#ec4899); display: grid; place-items: center; color: #fff; font-weight: 700; font-size: .85rem; }
+    .nav-chevron { width: 14px; height: 14px; stroke: var(--muted); stroke-width: 2; fill: none; }
+
+    /* ── HERO BANNER ── */
+    .hero {
+      background: linear-gradient(120deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%);
+      text-align: center;
+      padding: 60px 24px 64px;
+      animation: heroIn .7s ease both;
+    }
+    @keyframes heroIn { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+    .hero h1 { font-family: 'Sora', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #fff; letter-spacing: -.5px; }
+    .hero p  { margin-top: 10px; color: rgba(255,255,255,.85); font-size: 1rem; }
+
+    /* ── MAIN ── */
+    main { max-width: 1060px; margin: 0 auto; padding: 52px 24px 80px; }
+
+    /* Section title */
+    .sec-title { font-family: 'Sora', sans-serif; font-size: 1.45rem; font-weight: 700; color: var(--text); margin-bottom: 14px; }
+
+    /* ── OUR STORY ── */
+    .story { display: flex; gap: 40px; align-items: flex-start; margin-bottom: 56px; animation: fadeUp .6s .1s both; }
+    .story-text { flex: 1; }
+    .story-text p { color: var(--muted); line-height: 1.7; font-size: .95rem; }
+    .story-img {
+      flex-shrink: 0; width: 220px; height: 160px;
+      background: linear-gradient(135deg,#ede9fe,#dbeafe);
+      border-radius: 16px; display: grid; place-items: center; overflow: hidden;
+    }
+    .story-img svg { width: 160px; height: 120px; }
+
+    /* ── VALUES ── */
+    .values { margin-bottom: 56px; animation: fadeUp .6s .2s both; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; margin-top: 6px; }
+    .val-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px 24px; transition: box-shadow .25s, transform .25s;
+    }
+    .val-card:hover { box-shadow: 0 8px 28px rgba(99,102,241,.13); transform: translateY(-4px); }
+    .val-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg,#ede9fe,#dbeafe);
+      display: grid; place-items: center; margin-bottom: 16px;
+    }
+    .val-icon svg { width: 22px; height: 22px; stroke: var(--indigo); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .val-card h3 { font-weight: 700; font-size: .95rem; margin-bottom: 6px; }
+    .val-card p  { color: var(--muted); font-size: .82rem; line-height: 1.55; }
+
+    /* ── BOTTOM ROW ── */
+    .bottom-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; animation: fadeUp .6s .3s both; }
+
+    /* Team */
+    .team-list { display: flex; flex-direction: column; gap: 22px; margin-top: 6px; }
+    .member { display: flex; align-items: flex-start; gap: 14px; }
+    .member-avatar {
+      width: 54px; height: 54px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg,#f97316,#ec4899);
+      display: grid; place-items: center; font-weight: 700; color: #fff; font-size: .9rem;
+    }
+    .member-avatar.green { background: linear-gradient(135deg,#10b981,#3b82f6); }
+    .member-info h4 { font-weight: 700; font-size: .95rem; }
+    .member-info .role { font-size: .78rem; color: var(--muted); margin-bottom: 4px; }
+    .member-info p { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+    /* Future */
+    .future-intro { color: var(--muted); font-size: .9rem; margin-bottom: 20px; margin-top: 6px; line-height: 1.6; }
+    .future-list { display: flex; flex-direction: column; gap: 14px; }
+    .future-item { display: flex; align-items: center; gap: 12px; }
+    .future-item-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg,#ede9fe,#dbeafe);
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .future-item-icon svg { width: 18px; height: 18px; stroke: var(--indigo); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .future-item span { font-weight: 600; font-size: .9rem; color: var(--text); }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+
+    @media (max-width: 680px) {
+      .story { flex-direction: column; }
+      .story-img { width: 100%; }
+      .bottom-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    </div>
+    Freelance Worker Tracker
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#" class="active">About</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-bell">
+      <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+    </div>
+    <div class="nav-avatar">A</div>
+    <svg class="nav-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>About Freelance Worker Tracker</h1>
+  <p>Our Mission: Empowering the Independent Workforce</p>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- Our Story -->
+  <section class="story">
+    <div class="story-text">
+      <h2 class="sec-title">Our Story</h2>
+      <p>We were inspired to build Freelance Worker Tracker after noticing that many freelancers struggled with fragmented tools and platforms. We created a centralized and collaborative space for managing projects, teams, clients, and earnings — all in one place — so every independent professional can focus on the work they love.</p>
+    </div>
+    <div class="story-img">
+      <!-- Team collaboration illustration -->
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <!-- Table -->
+        <rect x="30" y="90" width="140" height="8" rx="4" fill="#c4b5fd"/>
+        <rect x="50" y="98" width="6" height="28" rx="3" fill="#a78bfa"/>
+        <rect x="144" y="98" width="6" height="28" rx="3" fill="#a78bfa"/>
+        <!-- Laptop -->
+        <rect x="80" y="65" width="50" height="30" rx="4" fill="#6d28d9"/>
+        <rect x="84" y="68" width="42" height="22" rx="2" fill="#dbeafe"/>
+        <rect x="70" y="95" width="70" height="5" rx="2.5" fill="#4f46e5"/>
+        <!-- Charts on screen -->
+        <rect x="87" y="78" width="6" height="8" rx="1" fill="#7c3aed"/>
+        <rect x="95" y="74" width="6" height="12" rx="1" fill="#6d28d9"/>
+        <rect x="103" y="76" width="6" height="10" rx="1" fill="#8b5cf6"/>
+        <rect x="111" y="72" width="6" height="14" rx="1" fill="#4f46e5"/>
+        <!-- Person left -->
+        <circle cx="50" cy="60" r="12" fill="#fbbf24"/>
+        <path d="M30 100 Q50 80 70 100" fill="#7c3aed"/>
+        <!-- Person right -->
+        <circle cx="155" cy="58" r="12" fill="#f9a8d4"/>
+        <path d="M135 100 Q155 78 175 100" fill="#4f46e5"/>
+        <!-- Chat bubbles -->
+        <rect x="58" y="30" width="36" height="18" rx="9" fill="#ede9fe"/>
+        <polygon points="68,48 62,54 74,48" fill="#ede9fe"/>
+        <circle cx="67" cy="39" r="3" fill="#7c3aed"/>
+        <circle cx="76" cy="39" r="3" fill="#7c3aed"/>
+        <circle cx="85" cy="39" r="3" fill="#7c3aed"/>
+        <!-- Clock -->
+        <circle cx="164" cy="28" r="14" fill="#dbeafe" stroke="#6d28d9" stroke-width="2"/>
+        <line x1="164" y1="22" x2="164" y2="28" stroke="#6d28d9" stroke-width="2" stroke-linecap="round"/>
+        <line x1="164" y1="28" x2="170" y2="32" stroke="#6d28d9" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Our Values -->
+  <section class="values">
+    <h2 class="sec-title">Our Values</h2>
+    <div class="values-grid">
+
+      <div class="val-card">
+        <div class="val-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="M17 3.34A10 10 0 1 1 3.34 17"/></svg>
+        </div>
+        <h3>Focus on Simplify</h3>
+        <p>Track project timelines and use a stopwatch to monitor your earnings with ease.</p>
+      </div>
+
+      <div class="val-card">
+        <div class="val-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Data Security</h3>
+        <p>Your data is protected with enterprise-grade encryption and secure storage at all times.</p>
+      </div>
+
+      <div class="val-card">
+        <div class="val-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Community Driven</h3>
+        <p>Built alongside real freelancers and contributors to empower growing communities.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Meet the Team + Our Future -->
+  <div class="bottom-row">
+
+    <section>
+      <h2 class="sec-title">Meet the Team</h2>
+      <div class="team-list">
+
+        <div class="member">
+          <div class="member-avatar">AH</div>
+          <div class="member-info">
+            <h4>Alex Herward</h4>
+            <div class="role">Team Officer</div>
+            <p>Alex is a passionate manager with a deep love for community building and social entrepreneurship.</p>
+          </div>
+        </div>
+
+        <div class="member">
+          <div class="member-avatar green">AS</div>
+          <div class="member-info">
+            <h4>Arisaina Shama</h4>
+            <div class="role">Team Director</div>
+            <p>Arisaina leads product direction with a sharp focus on user experience and scalable design systems.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec-title">Our Future</h2>
+      <p class="future-intro">Key upcoming features on the roadmap from the future enhancements PRD:</p>
+      <div class="future-list">
+
+        <div class="future-item">
+          <div class="future-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <span>AI Productivity Insights</span>
+        </div>
+
+        <div class="future-item">
+          <div class="future-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span>Team Collaboration Tools</span>
+        </div>
+
+        <div class="future-item">
+          <div class="future-item-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <span>Real-Time Analytics Dashboard</span>
+        </div>
+
+        <div class="future-item">
+          <div class="future-item-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+          </div>
+          <span>Client Portal & Invoicing</span>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+</body>
+</html>
