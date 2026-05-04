@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelance Worker Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f0f2f8;
+    --surface: #ffffff;
+    --purple-deep: #4b2fbd;
+    --purple-mid: #6b4ce6;
+    --purple-light: #8b6cf7;
+    --blue: #3b82f6;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #22c55e;
+    --shadow: 0 4px 24px rgba(75,47,189,0.10);
+    --radius: 16px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700; font-size: 17px; color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo .logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--purple-mid), var(--blue));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 18px;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 15px; font-weight: 500;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--purple-mid); }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+  .nav-bell {
+    width: 38px; height: 38px; background: var(--bg);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; cursor: pointer;
+    border: 1px solid var(--border);
+    transition: background .2s;
+  }
+  .nav-bell:hover { background: #e8eaf6; }
+  .nav-bell svg { width: 18px; height: 18px; stroke: var(--muted); }
+  .nav-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, #f97316, #ec4899);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 15px;
+    cursor: pointer;
+  }
+
+  /* ── MAIN ── */
+  main { max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(110deg, #5b2fd4 0%, #4b6fe8 60%, #3baef0 100%);
+    border-radius: 20px;
+    padding: 56px 52px;
+    margin-bottom: 36px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 8px 40px rgba(75,47,189,0.28);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; right: -60px; top: -60px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; right: 80px; bottom: -80px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: 34px; font-weight: 700;
+    color: #fff; margin-bottom: 10px; position: relative;
+  }
+  .hero p {
+    font-size: 16px; color: rgba(255,255,255,0.82); position: relative;
+  }
+
+  /* ── GATEWAY CARDS ── */
+  .gateways {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .gateway-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 28px 20px 22px;
+    display: flex; flex-direction: column; align-items: flex-start;
+    box-shadow: var(--shadow);
+    border: 1.5px solid transparent;
+    transition: border-color .2s, transform .22s, box-shadow .22s;
+    cursor: pointer;
+  }
+  .gateway-card:hover {
+    border-color: var(--purple-light);
+    transform: translateY(-5px);
+    box-shadow: 0 14px 40px rgba(107,76,230,0.20);
+  }
+
+  .gateway-icon {
+    width: 54px; height: 54px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px; overflow: hidden; flex-shrink: 0;
+  }
+  .icon-stripe  { background: #635bff; color: #fff; font-family: 'Sora',sans-serif; font-weight: 900; font-size: 26px; }
+  .icon-paypal  { background: #eaf0fb; }
+  .icon-jazz    { background: #fff3e0; font-size: 12px; font-weight: 900; color: #e65100; font-family: 'Sora',sans-serif; text-align: center; line-height: 1.3; }
+  .icon-easy    { background: #e8f5e9; font-size: 11px; font-weight: 800; color: #2e7d32; font-family: 'Sora',sans-serif; text-align: center; line-height: 1.3; }
+  .icon-bank    { background: #e8eaf6; }
+
+  .gateway-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 5px; color: var(--text);
+  }
+  .gateway-desc {
+    font-size: 12.5px; color: var(--muted);
+    margin-bottom: 20px; line-height: 1.55; flex: 1;
+  }
+  .btn-connect {
+    width: 100%; padding: 11px 0;
+    border: none; border-radius: 10px;
+    background: linear-gradient(90deg, var(--purple-deep), var(--purple-light));
+    color: #fff;
+    font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    transition: opacity .18s, transform .18s;
+    letter-spacing: .01em;
+  }
+  .btn-connect:hover  { opacity: 0.87; transform: scale(1.02); }
+  .btn-connect.setup  { background: linear-gradient(90deg, #3b82f6, #6366f1); }
+
+  /* ── PAYMENTS TABLE ── */
+  .payments-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .payments-header {
+    padding: 24px 28px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .payments-header h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 19px; font-weight: 700;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #f8f9fc; }
+  th {
+    text-align: left; padding: 13px 28px;
+    font-size: 12.5px; font-weight: 600; color: var(--muted);
+    letter-spacing: .05em; text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 15px 28px;
+    font-size: 14.5px; color: var(--text);
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  tr:last-child td { border-bottom: none; }
+  tbody tr { transition: background .15s; }
+  tbody tr:hover { background: #f5f7ff; }
+
+  .gateway-cell { display: flex; align-items: center; gap: 9px; }
+  .gw-dot {
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0;
+  }
+  .gw-jazz   { background: #e65100; color: #fff; }
+  .gw-easy   { background: #2e7d32; color: #fff; }
+  .gw-stripe { background: #635bff; color: #fff; }
+  .gw-paypal { background: #003087; color: #fff; }
+  .gw-bank   { background: #3949ab; color: #fff; }
+
+  .amount { font-weight: 700; font-family: 'Sora', sans-serif; }
+
+  .badge {
+    display: inline-block; padding: 4px 13px;
+    border-radius: 20px; font-size: 13px; font-weight: 600;
+  }
+  .badge-complete { background: #dcfce7; color: #166534; }
+  .badge-pending  { background: #fef9c3; color: #854d0e; }
+  .badge-failed   { background: #fee2e2; color: #991b1b; }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed; bottom: 32px; right: 32px;
+    background: linear-gradient(90deg, #4b2fbd, #6b4ce6);
+    color: #fff; padding: 14px 26px; border-radius: 12px;
+    font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 600;
+    box-shadow: 0 8px 32px rgba(75,47,189,0.3);
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .3s, transform .3s;
+    pointer-events: none; z-index: 9999;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 920px) {
+    .gateways { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 36px 28px; }
+    .hero h1 { font-size: 24px; }
+    .gateways { grid-template-columns: repeat(1, 1fr); }
+    th, td { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAVBAR ═══════════════════ -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="logo-icon">F</div>
+    Freelance Worker Tracker
+  </a>
+
+  <div class="nav-links">
+    <a href="#">Features</a>
+    <a href="#">Pricing</a>
+    <a href="#">About</a>
+  </div>
+
+  <div class="nav-right">
+    <div class="nav-bell" title="Notifications">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+    </div>
+    <div class="nav-avatar" title="Profile">A</div>
+  </div>
+</nav>
+
+<!-- ═══════════════════ MAIN ═══════════════════ -->
+<main>
+
+  <!-- Hero Banner -->
+  <div class="hero">
+    <h1>Connect Your Payment Gateway</h1>
+    <p>Configure secure client payments and automated invoicing</p>
+  </div>
+
+  <!-- Gateway Cards -->
+  <div class="gateways">
+
+    <!-- Jazz Cash -->
+    <div class="gateway-card">
+      <div class="gateway-icon icon-jazz">Jazz<br>Cash</div>
+      <div class="gateway-name">Jazz Cash</div>
+      <div class="gateway-desc">Link your Jazz Cash account</div>
+      <button class="btn-connect" onclick="showToast('Jazz Cash')">Connect</button>
+    </div>
+
+    <!-- Easy Paisa -->
+    <div class="gateway-card">
+      <div class="gateway-icon icon-easy">easy<br>paisa</div>
+      <div class="gateway-name">Easy Paisa</div>
+      <div class="gateway-desc">Link your Easy Paisa account</div>
+      <button class="btn-connect" onclick="showToast('Easy Paisa')">Connect</button>
+    </div>
+
+    <!-- Bank Transfer -->
+    <div class="gateway-card">
+      <div class="gateway-icon icon-bank">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+             stroke="#3949ab" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="3 9 12 2 21 9 21 20 3 20"/>
+          <rect x="9" y="13" width="6" height="7"/>
+        </svg>
+      </div>
+      <div class="gateway-name">Bank Transfer</div>
+      <div class="gateway-desc">Set up direct bank details</div>
+      <button class="btn-connect setup" onclick="showToast('Bank Transfer')">Set Up</button>
+    </div>
+
+  </div><!-- /gateways -->
+
+  <!-- Payments Overview Table -->
+  <div class="payments-card">
+    <div class="payments-header">
+      <h2>Payments Overview</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Amount</th>
+          <th>Gateway</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hamza Khan</td>
+          <td><span class="amount">$150</span></td>
+          <td>
+            <div class="gateway-cell">
+              <div class="gw-dot gw-jazz">J</div>
+              Jazz Cash
+            </div>
+          </td>
+          <td>10 Oct-2022</td>
+          <td><span class="badge badge-complete">Complete</span></td>
+        </tr>
+        <tr>
+          <td>Yasir</td>
+          <td><span class="amount">$95</span></td>
+          <td>
+            <div class="gateway-cell">
+              <div class="gw-dot gw-easy">E</div>
+              Easy Paisa
+            </div>
+          </td>
+          <td>15 Nov-2022</td>
+          <td><span class="badge badge-complete">Complete</span></td>
+        </tr>
+        <tr>
+          <td>Saim</td>
+          <td><span class="amount">$180</span></td>
+          <td>
+            <div class="gateway-cell">
+              <div class="gw-dot gw-bank">B</div>
+              Bank Transfer
+            </div>
+          </td>
+          <td>05 Feb-2023</td>
+          <td><span class="badge badge-pending">Pending</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- Toast Notification -->
+<div id="toast"></div>
+
+<!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
+<script>
+  let toastTimer = null;
+
+  function showToast(name) {
+    const toast = document.getElementById('toast');
+    clearTimeout(toastTimer);
+
+    toast.textContent = `✓ ${name} connection initiated!`;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+
+    toastTimer = setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(16px)';
+    }, 2400);
+  }
+</script>
+
+</body>
+</html>
